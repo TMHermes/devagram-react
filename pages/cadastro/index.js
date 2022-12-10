@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Botao from "../../componentes/botao";
 import UploadImagem from "../../componentes/uploadImagem";
 import {validarEmail, validarSenha, validarNome, validarConfirmacaoSenha} from '../../utils/validadores';
@@ -22,6 +23,7 @@ export default function Cadastro() {
     const [senha, setSenha] = useState("");
     const [confirmacaosenha, setConfirmacaoSenha] = useState("");
     const [estaSubmetendo, setEstaSubmetendo] = useState(false);
+    const router = useRouter();
 
     const validarFormulario = () => {
         return (
@@ -51,7 +53,12 @@ export default function Cadastro() {
             }
 
             await usuarioService.cadastro(corpoRequisicaoCadastro);
-            alert("Sucesso!");
+            await usuarioService.login({
+                login: email,
+                senha
+            });
+
+            router.push('/');
         }catch (error) {
             alert(
                 "Erro ao cadastrar usuario. " + error?.reponse?.data?.erro

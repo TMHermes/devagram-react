@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import InputPublico from "../inputPublico";
 import Botao from "../botao";
-import {validarEmail, validarSenha} from '../../utils/validadores';
+import { validarEmail, validarSenha } from '../../utils/validadores';
 
 import imagemEnvelope from "../../public/images/envelope.svg";
 import imagemChave from "../../public/images/chave.svg";
@@ -14,7 +14,7 @@ import UsuarioService from "../../services/UsuarioService";
 const usuarioService = new UsuarioService();
 
 
-export default function Login() {
+export default function Login({ aposAutenticacao }) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [estaSubmetendo, setEstaSubmetendo] = useState(false);
@@ -40,8 +40,10 @@ export default function Login() {
                 senha
             });
 
-
-        }catch (error) {
+            if (aposAutenticacao) {
+                aposAutenticacao();
+            }
+        } catch (error) {
             alert(
                 "Erro ao cadastrar usuario. " + error?.reponse?.data?.erro
             );
@@ -86,7 +88,7 @@ export default function Login() {
                     <Botao
                         texto="Login"
                         tipo="submit"
-                        desabilitado= {!validarFormulario() || estaSubmetendo}
+                        desabilitado={!validarFormulario() || estaSubmetendo}
                     />
                 </form>
 
