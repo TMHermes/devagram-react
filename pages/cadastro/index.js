@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Botao from "../../componentes/botao";
 import UploadImagem from "../../componentes/uploadImagem";
-import {validarEmail, validarSenha, validarNome, validarConfirmacaoSenha} from '../../utils/validadores';
+import { validarEmail, validarSenha, validarNome, validarConfirmacaoSenha } from '../../utils/validadores';
 import UsuarioService from "../../services/UsuarioService";
 
 import imagemLogo from "../../public/images/logo.svg";
@@ -36,7 +36,7 @@ export default function Cadastro() {
 
     const aoSubmeter = async (e) => {
         e.preventDefault();
-        if(!validarFormulario()) {
+        if (!validarFormulario()) {
             return;
         }
 
@@ -59,7 +59,7 @@ export default function Cadastro() {
             });
 
             router.push('/');
-        }catch (error) {
+        } catch (error) {
             alert(
                 "Erro ao cadastrar usuario. " + error?.reponse?.data?.erro
             );
@@ -86,7 +86,7 @@ export default function Cadastro() {
                         imagemPreview={imagem?.preview || imagemAvatar.src}
                         setImagem={setImagem}
 
-                    /> 
+                    />
 
                     <InputPublico
                         imagem={imagemusuarioAtivo}

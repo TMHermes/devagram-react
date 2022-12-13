@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import Home from "../componentes/home";
 import Login from "../componentes/login";
-import comAutorizacao from "../hoc/comAutorizacao";
 import UsuarioService from "../services/UsuarioService";
 
 
 const usuarioService = new UsuarioService();
-function Index() {
+export default function Index() {
 
-  const [estaAutenticado, setEstaAutenticado] = useState(false);
+  const [estaAutenticado, setEstaAutenticado] = useState(null);
 
   useEffect(() => {
     setEstaAutenticado(
@@ -16,11 +15,14 @@ function Index() {
     );
   }, []);
 
+  if (estaAutenticado === null) {
+    return null;
+  }
+
+
   if (estaAutenticado) {
     return <Home />;
   }
 
   return <Login aposAutenticacao={() => setEstaAutenticado(true)} />;
 }
-
-export default comAutorizacao(Home);
