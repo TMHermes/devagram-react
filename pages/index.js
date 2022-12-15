@@ -19,6 +19,10 @@ export default function Index() {
     return null;
   }
 
+  if (estaAutenticado === null) {
+    return null;
+  }
+
 
   if (estaAutenticado) {
     return <Home />;

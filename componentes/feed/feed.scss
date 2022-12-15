@@ -5,7 +5,6 @@
 
 
     .postagem {
-
         .avatar {
             height: 32px;
             width: 32px;
@@ -103,5 +102,34 @@
 
     @media screen and (min-width: $desktopBreakpoint) {
         padding-top: 8px;
+
+        .postagem {
+            .avatar {
+                height: 42px;
+                width: 42px;
+                margin-right: 8px;
+            }
+
+            .containerFazerComentario  {
+                margin-top: 12px;
+
+                .btnPublicacao {
+                    background-color: transparent;
+                    color: $corPrimaria;
+                    outline: none;
+                    border: none;
+                    font-size: 12px;
+                    cursor: pointer;
+                }
+            }
+
+            .rodapeDaPostagem {
+                .acoesDaPostagem {
+                    > span {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
 }
