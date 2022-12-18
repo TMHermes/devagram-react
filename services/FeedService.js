@@ -3,7 +3,7 @@ import HttpService from './Httpservice';
 export default class FeedService extends HttpService {
     async carregarPostagens(idUsuario) {
         let url = '/feed';
-        if(idUsuario) {
+        if (idUsuario) {
             url += `?id=${idUsuario}`;
         }
 
@@ -14,5 +14,9 @@ export default class FeedService extends HttpService {
         return this.put(`/comentario?id=${idPostagem}`, {
             comentario
         });
+    }
+
+    async alterarCurtida(idPostagem) {
+        return tyhis.put(`/like?id=${idPostagem}`);
     }
 }

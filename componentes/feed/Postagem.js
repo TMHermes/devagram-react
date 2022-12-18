@@ -23,6 +23,7 @@ export default function Postagem({
     curtidas
 
 }) {
+    const [curtidasPostagem, setCurtidasPostagem] = useState(curtidas);
     const [comentariosPostagem, setComentariosPostagem] = useState(comentarios);
     const [deveExibirSecaoParaComentar, setDeveExibirSecaoParaComentar] = useState(false);
     const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(
@@ -39,7 +40,7 @@ export default function Postagem({
 
     const obterDescricao = () => {
         let mensagem = descricao.substring(0, tamanhoAtualDaDescricao);
-        if(descricaoMaiorqueLimite()) {
+        if (descricaoMaiorqueLimite()) {
             mensagem += '...';
         }
         return mensagem;
@@ -63,17 +64,37 @@ export default function Postagem({
                     mensagem: comentario
                 }
             ]);
-        }catch (e) {
+        } catch (e) {
             alert('Erro ao fazer comentario! ' + (e?.response?.data?.erro || ''));
         }
     }
 
-    const alterarCurtida = () => {
-        try {
-            
-        }catch (e) {
+    const usuarioLogadoCurtiuPostagem = () => {
+        return curtidasPostagem.includes(usuarioLogado.id);
+    }
 
+    const alterarCurtida = async () => {
+        try {
+            await feedService.alterarCurtida(id);
+            if (usuarioLogadoCurtiuPostagem) {
+                setCurtidasPostagem(
+                    curtidasPostagem.filter(idUsuarioQueCurtiu => idUsuarioQueCurtiu !== usuarioLogado.id)
+                )
+            } else {
+                setCurtidasPostagem([
+                    ...curtidasPostagem,
+                    usuarioLogado.id
+                ]);
+            }
+        } catch (e) {
+            alert('Erro ao curtir/descurtir! ' + (e?.response?.data?.erro || ''));
         }
+    }
+
+    const obterImagemCurtida = () => {
+        return usuarioLogadoCurtiuPostagem()
+            ? imgCurtido
+            : imgCurtir;
     }
 
     return (
@@ -92,7 +113,7 @@ export default function Postagem({
             <div className="rodapeDaPostagem">
                 <div className="acoesDaPostagem">
                     <Image
-                        src={imgCurtir}
+                        src={obterImagemCurtida}
                         alt='icone curtir'
                         width={20}
                         height={20}
@@ -109,7 +130,7 @@ export default function Postagem({
                     />
 
                     <span className="quantidadeDeCurtidas">
-                        Curtido por <strong>{curtidas.length} pessoas</strong>
+                        Curtido por <strong>{curtidasPostagem.length} pessoas</strong>
                     </span>
                 </div>
 
@@ -118,7 +139,7 @@ export default function Postagem({
                     <p className="descricao">
                         {obterDescricao()}
                         {descricaoMaiorqueLimite() && (
-                            <span 
+                            <span
                                 onClick={exibirDescricaoCompleta}
                                 className="exibirDescricaoCompleta">
                                 mais
@@ -134,10 +155,10 @@ export default function Postagem({
                             <p className="descricao">{comentario.mensagem}</p>
                         </div>
                     ))}
-                </div> 
+                </div>
             </div>
 
-            {deveExibirSecaoParaComentar && 
+            {deveExibirSecaoParaComentar &&
                 <FazerComentario comentar={comentar} usuarioLogado={usuarioLogado} />
             }
         </div>
