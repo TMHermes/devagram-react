@@ -17,14 +17,14 @@
             padding: 0 12px;
             margin-bottom: 8px;
 
-           
+
 
             strong {
                 font-size: 12px;
                 color: $cinza4;
             }
         }
-        
+
         .fotoDaPostagem {
             img {
                 width: 100%;
@@ -33,18 +33,18 @@
                 object-fit: cover;
             }
         }
-        
+
         .rodapeDaPostagem {
-            
+
             padding: 5px 16px;
-            
+
             strong.nomeUsuario {
                 font-size: 12px;
                 float: left;
                 margin-right: 4px;
                 color: $cinza4;
             }
-            
+
             p.descricao {
                 font-size: 12px;
                 margin: 0 0 2px;
@@ -63,7 +63,7 @@
                 align-items: center;
                 margin-bottom: 6px;
 
-                > span {
+                >span {
                     margin-right: 6px !important;
                 }
 
@@ -71,7 +71,7 @@
                     font-family: $fontLight;
                     font-size: 10px;
                     color: $cinza4;
-                    
+
                     strong {
                         font-size: 10px;
                         color: $cinza4;
@@ -102,15 +102,19 @@
 
     @media screen and (min-width: $desktopBreakpoint) {
         padding-top: 8px;
+        margin-top: 0px;
 
         .postagem {
+            .cabecalhoPostagem {
+                cursor: pointer;
+            }
+
             .avatar {
                 height: 42px;
                 width: 42px;
-                margin-right: 8px;
             }
 
-            .containerFazerComentario  {
+            .containerFazerComentario {
                 margin-top: 12px;
 
                 .btnPublicacao {
@@ -125,7 +129,7 @@
 
             .rodapeDaPostagem {
                 .acoesDaPostagem {
-                    > span {
+                    >span {
                         cursor: pointer;
                     }
                 }
