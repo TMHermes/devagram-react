@@ -7,7 +7,6 @@ export default class UsuarioService extends HttpService {
         localStorage.setItem("nome", data.nome);
         localStorage.setItem("email", data.email);
         localStorage.setItem("token", data.token);
-        localStorage.setItem("avatar", data.token);
 
         const usuario = await this.get('/usuario');
         localStorage.setItem('id', usuario.data._id);
@@ -17,8 +16,20 @@ export default class UsuarioService extends HttpService {
         }
     }
 
+    async logout() {
+        localStorage.removeItem("nome");
+        localStorage.removeItem("email");
+        localStorage.removeItem("token");
+        localStorage.removeItem("id");
+        localStorage.removeItem("avatar");
+    }
+
     async cadastro(dados) {
         return this.post('/cadastro', dados);
+    }
+
+    async atualizarPerfil(dados) {
+        return this.put(`/usuario`, dados);
     }
 
     estaAutenticado() {

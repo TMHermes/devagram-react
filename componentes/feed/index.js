@@ -10,6 +10,7 @@ export default function Feed({ usuarioLogado, idUsuario }) {
     const [listaDePostagens, setListaDePostagens] = useState([]);
 
     useEffect(async () => {
+        setListaDePostagens([]);
         const { data } = await feedService.carregarPostagens(idUsuario);
 
         const postagensFormatadas = data.map((postagem) => (
