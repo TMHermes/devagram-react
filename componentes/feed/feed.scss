@@ -35,7 +35,6 @@
         }
 
         .rodapeDaPostagem {
-
             padding: 5px 16px;
 
             strong.nomeUsuario {
@@ -78,6 +77,11 @@
 
                     }
                 }
+            }
+
+            .comentariosDaPublicacao {
+                max-height: 100px;
+                overflow-y: auto;
             }
         }
 
