@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import imgSetaEsquerda from '../../public/images/setaEsquerda.svg';
 import imgLogout from '../../public/images/logout.svg';
-import CabecalhoComAcoes from '../componentes/cabecalhoComAcoes';
+import CabecalhoComAcoes from '../cabecalhoComAcoes';
 import Botao from '../botao';
 import Avatar from '../avatar';
 import UsuarioService from '../../services/UsuarioService';
