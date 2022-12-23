@@ -8,7 +8,7 @@ import { validarEmail, validarSenha, validarNome, validarConfirmacaoSenha } from
 import UsuarioService from "../../services/UsuarioService";
 
 import imagemLogo from "../../public/images/logo.svg";
-import imagemUsuarioAtivo from "../../public/imagens/usuarioAtivo.svg";
+import imagemUsuarioAtivo from "../../public/images/usuarioAtivo.svg";
 import imagemEnvelope from "../../public/images/envelope.svg";
 import imagemChave from "../../public/images/chave.svg";
 import imagemAvatar from "../../public/images/avatar.svg";
@@ -57,7 +57,7 @@ export default function Cadastro() {
                 login: email,
                 senha
             });
-            
+
             router.push('/');
         } catch (error) {
             alert(
