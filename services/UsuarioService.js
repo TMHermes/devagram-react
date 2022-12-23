@@ -1,4 +1,4 @@
-import DevagramApiService from "./DevagramApiService";
+import DevagramApiService from "./DevagramApiservice";
 
 export default class UsuarioService extends DevagramApiService {
     async login(credenciais) {

@@ -1,4 +1,4 @@
-import DevagramApiService from "./DevagramApiService";
+import DevagramApiService from "./DevagramApiservice";
 
 export default class FeedService extends DevagramApiService {
     async carregarPostagens(idUsuario) {
