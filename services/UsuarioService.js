@@ -1,6 +1,6 @@
-import HttpService from "./Httpservice";
+import DevagramApiService from "./DevagramApiService";
 
-export default class UsuarioService extends HttpService {
+export default class UsuarioService extends DevagramApiService {
     async login(credenciais) {
         const { data } = await this.post('/login', credenciais);
 
@@ -37,14 +37,14 @@ export default class UsuarioService extends HttpService {
     }
 
     async pesquisar(termoDaPesquisa) {
-        return this.get('/pesquisa?filter=' + termoDaPesquisa)
+        return this.get('/pesquisa?filter=' + termoDaPesquisa);
     }
 
-    async obterDadosdoUsuario() {
-        return this.get(`/pesquisa=?id=${idUsuario}`);
+    async obterPerfil(idUsuario) {
+        return this.get(`/pesquisa?id=${idUsuario}`);
     }
 
-    async alternarSeguir() {
+    async alternarSeguir(idUsuario) {
         return this.put(`/seguir?id=${idUsuario}`);
     }
 
