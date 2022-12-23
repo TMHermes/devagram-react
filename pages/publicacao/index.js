@@ -1,14 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useRouter } from 'next/router';
-
-import CabecalhoComAcoes from '../../componentes/cabecalhoComAcoes';
-import comAutorizacao from '../../hoc/comAutorizacao';
-import UploadImagem from '../../componentes/uploadImagem';
-import Botao from '../../componentes/botao';
-import imagemPublicacao from '../../public/images/imagemPublicacao.svg';
-import imagemSetaEsquerda from '../../public/images/setaEsquerda.svg';
-import FeedService from '../../services/FeedService';
-
+import Botao from "../../componentes/botao";
+import CabecalhoComAcoes from "../../componentes/cabecalhoComAcoes";
+import UploadImagem from "../../componentes/uploadImagem";
+import comAutorizacao from "../../hoc/comAutorizacao";
+import imagemPublicacao from '../../public/imagens/imagemPublicacao.svg';
+import imagemSetaEsquerda from '../../public/imagens/setaEsquerda.svg';
+import FeedService from "../../services/FeedService";
 
 const limiteDaDescricao = 255;
 const descricaoMinima = 3;
@@ -73,7 +71,7 @@ function Publicacao() {
 
     const obterClassNameCabecalho = () => {
         if (estaNaEtapaUm()) {
-            return 'primeraEtapa';
+            return 'primeiraEtapa';
         }
 
         return 'segundaEtapa';
@@ -82,7 +80,7 @@ function Publicacao() {
     const publicar = async () => {
         try {
             if (!validarFormulario()) {
-                alert('A descrição mínima é de 3 caracteres e a imagem precisa estar selecionada.')
+                alert('A descrição precisa de pelo menos 3 caracteres e a imagem precisa estar selecionada.');
                 return;
             }
 
@@ -93,7 +91,7 @@ function Publicacao() {
             await feedService.fazerPublicacao(corpoPublicacao);
             router.push('/');
         } catch (error) {
-            alert('Erro ao salvar publicação!')
+            alert('Erro ao salvar publicação!');
         }
     }
 
@@ -105,15 +103,15 @@ function Publicacao() {
     }
 
     return (
-        <div className='paginaPublicacao largura30pctDesktop'>
+        <div className="paginaPublicacao largura30pctDesktop">
             <CabecalhoComAcoes
                 className={obterClassNameCabecalho()}
-                iconeEsquerda={estaNaEtapaUm() ? null : imagemSetaEsquerda}
+                iconeEquerda={estaNaEtapaUm() ? null : imagemSetaEsquerda}
                 textoEsquerda={obterTextoEsquerdaCabecalho()}
                 aoClicarAcaoEsquerda={aoClicarAcaoEsquerdaCabecalho}
                 elementoDireita={obterTextoDireitaCabecalho()}
                 aoClicarElementoDireita={aoClicarAcaoDireitaCabecalho}
-                titulo='Nova Publicacao'
+                titulo='Nova publicação'
             />
 
             <hr className='linhaDivisoria' />
@@ -121,7 +119,7 @@ function Publicacao() {
             <div className="conteudoPaginaPublicacao">
                 {estaNaEtapaUm()
                     ? (
-                        <div className='primeiraEtapa'>
+                        <div className="primeiraEtapa">
                             <UploadImagem
                                 setImagem={setImagem}
                                 aoSetarAReferencia={setInputImagem}
@@ -129,17 +127,16 @@ function Publicacao() {
                                 imagemPreview={imagem?.preview || imagemPublicacao.src}
                             />
 
-                            <span className='desktop textoDragAndDrop'>Arraste sua foto aqui!</span>
+                            <span className="desktop textoDragAndDrop">Arraste sua foto aqui!</span>
 
                             <Botao
                                 texto='Selecionar uma imagem'
                                 manipularClique={() => inputImagem?.click()}
                             />
                         </div>
-
                     ) : (
                         <>
-                            <div className='segundaEtapa'>
+                            <div className="segundaEtapa">
                                 <UploadImagem
                                     setImagem={setImagem}
                                     imagemPreview={imagem?.preview}
@@ -151,7 +148,7 @@ function Publicacao() {
                                     placeholder='Escreva uma legenda...'
                                     onChange={escreverDescricao}
                                 ></textarea>
-
+                                
                             </div>
                             <hr className='linhaDivisoria' />
                         </>

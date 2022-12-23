@@ -1,18 +1,16 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import InputPublico from "../inputPublico";
 import Botao from "../botao";
-import { validarEmail, validarSenha } from '../../utils/validadores';
-
-import imagemEnvelope from "../../public/images/envelope.svg";
-import imagemChave from "../../public/images/chave.svg";
-import imagemLogo from "../../public/images/logo.svg";
-
+import { validarEmail, validarSenha } from "../../utils/validadores";
 import UsuarioService from "../../services/UsuarioService";
 
-const usuarioService = new UsuarioService();
+import imagemEnvelope from "../../public/imagens/envelope.svg";
+import imagemChave from "../../public/imagens/chave.svg";
+import imagemLogo from "../../public/imagens/logo.svg";
 
+const usuarioService = new UsuarioService();
 
 export default function Login({ aposAutenticacao }) {
     const [email, setEmail] = useState("");
@@ -23,7 +21,7 @@ export default function Login({ aposAutenticacao }) {
         return (
             validarEmail(email)
             && validarSenha(senha)
-        )
+        );
     }
 
     const aoSubmeter = async (e) => {
@@ -45,12 +43,12 @@ export default function Login({ aposAutenticacao }) {
             }
         } catch (error) {
             alert(
-                "Erro ao cadastrar usuario. " + error?.reponse?.data?.erro
+                "Erro ao realizar o login. " + error?.response?.data?.erro
             );
         }
 
         setEstaSubmetendo(false);
-    }
+    } 
 
     return (
         <section className={`paginaLogin paginaPublica`}>
@@ -68,7 +66,7 @@ export default function Login({ aposAutenticacao }) {
                     <InputPublico
                         imagem={imagemEnvelope}
                         texto="E-mail"
-                        tipo="e-mail"
+                        tipo="email"
                         aoAlterarValor={e => setEmail(e.target.value)}
                         valor={email}
                         mensagemValidacao="O endereço informado é inválido"
@@ -91,7 +89,7 @@ export default function Login({ aposAutenticacao }) {
                         desabilitado={!validarFormulario() || estaSubmetendo}
                     />
                 </form>
-
+                
                 <div className="rodapePaginaPublica">
                     <p>Não possui uma conta?</p>
                     <Link href="/cadastro">Faça seu cadastro agora!</Link>
