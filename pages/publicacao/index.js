@@ -4,8 +4,8 @@ import Botao from "../../componentes/botao";
 import CabecalhoComAcoes from "../../componentes/cabecalhoComAcoes";
 import UploadImagem from "../../componentes/uploadImagem";
 import comAutorizacao from "../../hoc/comAutorizacao";
-import imagemPublicacao from '../../public/imagens/imagemPublicacao.svg';
-import imagemSetaEsquerda from '../../public/imagens/setaEsquerda.svg';
+import imagemPublicacao from '../../public/images/imagemPublicacao.svg';
+import imagemSetaEsquerda from '../../public/images/setaEsquerda.svg';
 import FeedService from "../../services/FeedService";
 
 const limiteDaDescricao = 255;

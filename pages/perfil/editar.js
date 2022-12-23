@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import CabecalhoComAcoes from '../../componentes/cabecalhoComAcoes';
 import UploadImagem from '../../componentes/uploadImagem';
 import comAutorizacao from '../../hoc/comAutorizacao';
-import imgAvatarPadrao from '../../public/imagens/avatar.svg';
-import imgLimpar from '../../public/imagens/limpar.svg';
+import imgAvatarPadrao from '../../public/images/avatar.svg';
+import imgLimpar from '../../public/images/limpar.svg';
 import UsuarioService from '../../services/UsuarioService';
 import { validarNome } from '../../utils/validadores';
 

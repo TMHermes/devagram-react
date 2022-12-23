@@ -6,9 +6,9 @@ import Botao from "../botao";
 import { validarEmail, validarSenha } from "../../utils/validadores";
 import UsuarioService from "../../services/UsuarioService";
 
-import imagemEnvelope from "../../public/imagens/envelope.svg";
-import imagemChave from "../../public/imagens/chave.svg";
-import imagemLogo from "../../public/imagens/logo.svg";
+import imagemEnvelope from "../../public/images/envelope.svg";
+import imagemChave from "../../public/images/chave.svg";
+import imagemLogo from "../../public/images/logo.svg";
 
 const usuarioService = new UsuarioService();
 

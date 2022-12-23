@@ -7,11 +7,11 @@ import UploadImagem from "../../componentes/uploadImagem";
 import { validarEmail, validarSenha, validarNome, validarConfirmacaoSenha } from "../../utils/validadores";
 import UsuarioService from "../../services/UsuarioService";
 
-import imagemLogo from "../../public/imagens/logo.svg";
+import imagemLogo from "../../public/images/logo.svg";
 import imagemUsuarioAtivo from "../../public/imagens/usuarioAtivo.svg";
-import imagemEnvelope from "../../public/imagens/envelope.svg";
-import imagemChave from "../../public/imagens/chave.svg";
-import imagemAvatar from "../../public/imagens/avatar.svg";
+import imagemEnvelope from "../../public/images/envelope.svg";
+import imagemChave from "../../public/images/chave.svg";
+import imagemAvatar from "../../public/images/avatar.svg";
 import { useRouter } from "next/router";
 
 const usuarioService = new UsuarioService();
